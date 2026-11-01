@@ -2,95 +2,206 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-body {
-    /* Đổi font mặc định sang Segoe UI */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* --- Phần Hero --- */
+/* =========================================
+   CSS CHO TRANG 1 (INDEX.HTML)
+   ========================================= */
 .hero {
     position: relative;
     width: 100%;
-    height: 100vh; /* Chiếm toàn bộ chiều cao màn hình */
-    /* Ảnh nền mô phỏng (bạn có thể thay link ảnh khác vào đây) */
+    height: 100vh;
+    /* Bạn có thể thay link ảnh nền khác ở đây */
     background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop');
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
-    
-    /* Căn giữa nội dung theo chiều dọc và ngang */
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* Lớp phủ tối màu ở rìa (Vignette effect) */
 .hero-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    /* Tạo bóng mờ đen xung quanh rìa */
-    box-shadow: inset 0 0 150px 60px rgba(0, 0, 0, 0.8);
-    /* Có thể thêm lớp nền tối mờ nhẹ để chữ dễ đọc hơn */
+    box-shadow: inset 0 0 150px 60px rgba(0, 0, 0, 0.8); /* Lớp phủ tối rìa */
     background: rgba(0, 0, 0, 0.2); 
     z-index: 1;
 }
 
-/* Nội dung chữ và nút */
 .hero-content {
     position: relative;
-    z-index: 2; /* Nổi lên trên lớp phủ */
+    z-index: 2;
     text-align: center;
     color: white;
 }
 
-/* Chữ lớn: Segoe UI Đậm, 36px */
 .hero-content h1 {
-    font-family: 'Segoe UI', sans-serif;
-    font-weight: 700; /* Đậm */
+    font-weight: 700;
     font-size: 36px;
     line-height: 1.3;
     margin-bottom: 15px;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.5); /* Đổ bóng nhẹ cho chữ */
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
 
-/* Chữ nhỏ: Segoe UI, 18px */
 .hero-content p {
-    font-family: 'Segoe UI', sans-serif;
-    font-weight: 400; /* Bình thường */
+    font-weight: 400;
     font-size: 18px;
     margin-bottom: 40px;
     text-shadow: 0 2px 5px rgba(0,0,0,0.5);
 }
 
-/* Nút bấm */
-.hero-content button {
-    font-family: 'Segoe UI', sans-serif;
-    font-weight: 700; /* Đậm */
+/* Nút bấm ở Trang 1 (đã đổi thành thẻ a để chuyển trang) */
+.btn-hero {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
     font-size: 18px;
     color: white;
-    
-    /* Kích thước: W 6.28cm (~238px), H 2.02cm (~76px) */
-    width: 238px;
-    height: 76px;
-    
-    /* Màu nền cam chuyển sắc giống ảnh mẫu */
+    text-decoration: none;
+    width: 238px; /* ~6.28cm */
+    height: 76px; /* ~2.02cm */
     background: linear-gradient(to bottom, #ff9a44, #fc6076);
-    border: none;
-    border-radius: 12px; /* Bo góc */
-    cursor: pointer;
-    
-    /* Hiệu ứng bóng đổ cho nút */
+    border-radius: 12px;
     box-shadow: 0 4px 15px rgba(252, 96, 118, 0.4);
     transition: all 0.3s ease;
 }
 
-/* Hiệu ứng khi rê chuột vào nút */
-.hero-content button:hover {
+.btn-hero:hover {
     transform: translateY(-3px);
     box-shadow: 0 6px 20px rgba(252, 96, 118, 0.6);
+}
+
+/* =========================================
+   CSS CHO TRANG 2 (TRANG-CHINH.HTML)
+   ========================================= */
+body.trang-2 {
+    background-color: #d4e4f7; 
+}
+
+/* Thanh Menu */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #0056b3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    z-index: 1000;
+}
+
+.navbar .logo {
+    color: white;
+    font-weight: 900;
+    font-size: 24px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    transition: opacity 0.3s;
+}
+
+.nav-links a:hover {
+    opacity: 0.8;
+}
+
+/* Phần Xin Chào */
+.hero-section {
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 60px;
+    text-align: center;
+    background-color: #d4e4f7;
+}
+
+.hero-section h1 {
+    color: white;
+    font-weight: 900;
+    font-size: 36px;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* Dải phân cách */
+.separator {
+    width: 100%;
+    height: 120px;
+    background-image: url('https://images.unsplash.com/photo-1506744626753-1fa44df31c4b?q=80&w=2070&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    border-top: 1px solid #333;
+}
+
+.separator::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, #d4e4f7 0%, rgba(212, 228, 247, 0) 100%);
+}
+
+/* Nội dung chính */
+.main-content {
+    padding: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+    background-color: #d4e4f7;
+}
+
+.section-title {
+    display: flex;
+    align-items: baseline;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.text-3d {
+    font-weight: 900;
+    font-size: 40px;
+    color: #0056b3;
+}
+
+.text-sub {
+    font-weight: 400;
+    font-size: 24px;
+    color: #000;
+}
+
+/* Khung 3D */
+.model-container {
+    width: 100%;
+    height: 600px;
+    background-color: #000;
+    border-radius: 40px 40px 0 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.model-container model-viewer {
+    width: 100%;
+    height: 100%;
+    outline: none;
 }

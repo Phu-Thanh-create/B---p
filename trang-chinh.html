@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Chính - Lớp 11A2</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Thư viện 3D -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+</head>
+<body>
+
+    <!-- Thanh Menu (Cố định) -->
+    <header class="navbar">
+        <div class="logo">Lớp 11A2</div>
+        <nav class="nav-links">
+            <a href="#trang-chu">Trang chủ</a>
+            <a href="#anh-3d">Ảnh 3D</a>
+            <a href="#gioi-thieu">Giới thiệu</a>
+            <a href="#lien-he">Liên hệ</a>
+        </nav>
+    </header>
+
+    <!-- Phần Xin Chào -->
+    <section id="trang-chu" class="hero-section">
+        <h1>Xin gửi lời chào tới vị khách đã ghé thăm!</h1>
+    </section>
+
+    <!-- Dải phân cách (Ảnh + Gradient) -->
+    <div class="separator"></div>
+
+    <!-- Phần Nội dung (Ảnh 3D) -->
+    <section id="anh-3d" class="main-content">
+        <div class="section-title">
+            <span class="text-3d">3D</span> <span class="text-sub">Một vài tấm ảnh đặc biệt từ chúng tôi!</span>
+        </div>
+
+        <div class="model-container">
+            <!-- Nhớ thay "mo-hinh.glb" bằng tên file 3D của bạn -->
+            <model-viewer src="mo-hinh.glb" alt="Mô hình 3D" camera-controls auto-rotate></model-viewer>
+        </div>
+    </section>
+
+    <!-- Các phần để test cuộn (bạn có thể thêm nội dung sau) -->
+    <section id="gioi-thieu" style="height: 800px; padding: 50px; text-align: center;">
+        <h2 style="margin-top: 50px; color: #0056b3;">Giới thiệu</h2>
+    </section>
+    <section id="lien-he" style="height: 800px; padding: 50px; text-align: center;">
+        <h2 style="margin-top: 50px; color: #0056b3;">Liên hệ</h2>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
