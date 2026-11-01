@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Đầu Tiên Của Tôi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Thanh menu -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">Mừ một a 2</div>
+            <ul class="nav-links">
+                <li><a href="#home">Trang chủ</a></li>
+                <li><a href="#about">Giới thiệu</a></li>
+                <li><a href="#services">Dịch vụ</a></li>
+                <li><a href="#contact">Liên hệ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Phần Hero -->
+    <section id="home" class="hero">
+        <h1>Chào mừng đến với Website của 11A2</h1>
+        <p>Chào mừng đến với website lớp bị ép làm.</p>
+        <button onclick="showMessage()">Nhấn vào đây</button>
+    </section>
+
+    <!-- Giới thiệu -->
+    <section id="about" class="section">
+        <h2>Giới thiệu</h2>
+        <p>Chúng tôi bị ép!</p>
+    </section>
+
+    <!-- Dịch vụ -->
+    <section id="services" class="section gray">
+        <h2>Dịch vụ</h2>
+        <div class="cards">
+            <div class="card">
+                <h3>Thiết kế Web</h3>
+                <p>Thiết kế website đẹp và chuyên nghiệp</p>
+            </div>
+            <div class="card">
+                <h3>Lập trình</h3>
+                <p>Lập trình các ứng dụng web hiện đại</p>
+            </div>
+            <div class="card">
+                <h3>SEO</h3>
+                <p>Tối ưu hóa công cụ tìm kiếm</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Liên hệ -->
+    <section id="contact" class="section">
+        <h2>Liên hệ</h2>
+        <form onsubmit="submitForm(event)">
+            <input type="text" placeholder="Họ tên" required>
+            <input type="email" placeholder="Email" required>
+            <textarea placeholder="Nội dung tin nhắn" rows="5" required></textarea>
+            <button type="submit">Gửi</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 MyWebsite. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
