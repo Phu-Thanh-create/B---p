@@ -144,9 +144,6 @@ body.trang-2 {
 .separator {
     width: 100%;
     height: 250px; /* Độ cao của dải chuyển màu. Bạn có thể tăng giảm tùy ý */
-    /* Tạo line kẻ mảnh phía trên */
-    border-top: 1px solid #555; 
-    
     /* Hiệu ứng màu xanh da trời đậm dần từ trên xuống 
        - #eaf4ff (Xanh rất nhạt)
        - #b5d5f5 (Xanh vừa)
