@@ -79,10 +79,9 @@
 /* =========================================
    CSS CHO TRANG 2 (TRANG-CHINH.HTML)
    ========================================= */
-body.trang-2 {
-    background-color: #d4e4f7; 
+body {
+    background-color: #eaf4ff; /* Đổi màu nền tổng thành xanh nhạt để không bao giờ lộ màu trắng */
 }
-
 /* Thanh Menu */
 .navbar {
     position: fixed;
