@@ -189,29 +189,30 @@ body {
 .main-content {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 80px 60px 50px 60px; /* Tăng padding-top lên 80px để đẩy nội dung xuống dưới */
     
-    /* 2 đường kẻ dọc Wikipedia (giữ nguyên) */
+    /* Giữ padding này để đẩy nội dung xuống */
+    padding: 100px 60px 50px 60px; 
+    
+    /* 2 đường kẻ dọc 2 bên */
     border-left: 2px solid #0056b3; 
     border-right: 2px solid #0056b3; 
     
-    /* GRADIENT NỀN THEO Ý BẠN */
+    /* SỬA LẠI GRADIENT: Bắt đầu bằng trong suốt hoàn toàn ở 0% */
     background: linear-gradient(
         to bottom, 
-        rgba(255, 255, 255, 0) 0%,          /* 0% Transparency 100% white */
-        rgba(173, 192, 232, 0.71) 52%,       /* 52% Transparency 29% ADC0E8 */
-        rgba(173, 192, 232, 0.82) 70%,       /* 70% Transparency 18% ADC0E8 */
-        #C8D5EF 100%                         /* 100% C8D5EF */
+        rgba(255, 255, 255, 0) 0%,            /* Trong suốt ở trên cùng để nhìn xuyên qua ảnh */
+        rgba(255, 255, 255, 0.8) 15%,         /* Bắt đầu chuyển sang trắng mờ */
+        rgba(173, 192, 232, 0.71) 52%,        /* 52% ADC0E8 */
+        rgba(173, 192, 232, 0.82) 70%,        /* 70% ADC0E8 */
+        #C8D5EF 100%                          /* 100% C8D5EF */
     );
 
-    /* ĐƯỜNG KẺ NGANG Ở TRÊN CÙNG (From center) */
-    /* Dùng border-image để tạo hiệu ứng mờ dần từ giữa ra 2 bên */
-    border-top: 2px solid;
-    border-image: radial-gradient(circle, #ADC0E8 0%, transparent 80%) 1;
+    /* Ẩn cái đường kẻ ngang gắt ở trên cùng đi (nếu không muốn có) */
+    border-top: none; 
     
     position: relative;
+    z-index: 2;
 }
-
 .section-title {
     display: flex;
     align-items: baseline;
