@@ -38,6 +38,21 @@
         <div class="model-container">
             <!-- Nhớ thay "mo-hinh.glb" bằng tên file 3D của bạn -->
             <model-viewer src="mo-hinh.glb" alt="Mô hình 3D" camera-controls auto-rotate></model-viewer>
+                    <!-- Khung xem ảnh 360 độ -->
+        <div class="section-title" style="margin-top: 40px;">
+            <span class="text-3d">360°</span> <span class="text-sub">Toàn cảnh không gian 11A2!</span>
+        </div>
+
+        <div class="model-container" style="height: 500px;">
+            <!-- Thay "anh-360.jpg" bằng tên file ảnh của bạn -->
+            <model-viewer src="anh-360.jpg" 
+                          alt="Ảnh toàn cảnh 360 độ" 
+                          camera-controls 
+                          auto-rotate 
+                          ar 
+                          style="background-color: transparent;">
+            </model-viewer>
+        </div>
         </div>
     </section>
 
