@@ -80,7 +80,8 @@
    CSS CHO TRANG 2 (TRANG-CHINH.HTML)
    ========================================= */
 body {
-    background-color: #eaf4ff; /* Đổi màu nền tổng thành xanh nhạt để không bao giờ lộ màu trắng */
+    background-color: #f4f7f6; /* Màu xám xanh rất nhạt cho 2 bên rìa */
+    /* ... các code khác giữ nguyên */
 }
 /* Thanh Menu */
 .navbar {
@@ -167,22 +168,28 @@ body {
 .separator {
     width: 100%;
     height: 250px; 
-    
-    /* Kéo dải gradient chui lên trên ảnh một chút */
-    margin-top: -80px; /* Tăng lên -80px để nó đè sâu hơn vào ảnh, che cái mép trắng */
+    margin-top: -80px; 
     position: relative;
     z-index: 3;
-    
-    /* Bắt đầu bằng màu #eaf4ff (khớp với nền body) và đậm dần xuống */
-    background: linear-gradient(to bottom, #eaf4ff 0%, #b5d5f5 40%, #4a90e2 100%);
+    /* Kết thúc bằng màu xanh đậm nhất */
+    background: linear-gradient(to bottom, #eaf4ff 0%, #b5d5f5 50%, #4a90e2 100%);
 }
 
 /* Nội dung chính */
 .main-content {
-    padding: 40px;
-    max-width: 1400px;
-    margin: 0 auto;
-    background-color: #d4e4f7;
+    /* Xóa màu nền xanh đi, đổi thành màu trắng */
+    background-color: #ffffff;
+    
+    /* Thiết lập chiều rộng và căn giữa */
+    max-width: 1200px;
+    margin: 0 auto; /* Căn giữa trang */
+    padding: 50px 60px; /* Khoảng cách trên dưới 50px, trái phải 60px */
+    
+    /* Tạo 2 đường kẻ dọc 2 bên giống Wikipedia */
+    border-left: 2px solid #0056b3; /* Đường kẻ bên trái màu xanh đậm */
+    border-right: 2px solid #0056b3; /* Đường kẻ bên phải màu xanh đậm */
+    
+    box-shadow: 0 0 20px rgba(0,0,0,0.05); /* Đổ bóng nhẹ cho khung nổi lên */
 }
 
 .section-title {
