@@ -80,8 +80,9 @@
    CSS CHO TRANG 2 (TRANG-CHINH.HTML)
    ========================================= */
 body {
-    background-color: #ffffff; /* Đổi nền tổng thành màu trắng */
+    background-color: #C8D5EF; 
 }
+
 /* Thanh Menu */
 .navbar {
     position: fixed;
@@ -134,19 +135,44 @@ body {
     overflow: hidden;
 }
 
-.hero-bg {
-    /* ... các code cũ giữ nguyên ... */
-    opacity: 0.4; 
-    
-    /* Làm mờ dần đuôi ảnh sang màu xanh nhạt */
-    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
-    mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+/* --- Phần Xin Chào (Ảnh nền + Chữ) --- */
+.hero-section {
+    position: relative; 
+    height: 60vh; /* Tăng chiều cao lên một chút cho hoành tráng */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 60px;
+    text-align: center;
+    /* Màu nền dự phòng khớp với gradient */
+    background-color: #ffffff; 
+    overflow: hidden;
 }
 
-/* Đảm bảo thẻ section chứa ảnh có màu nền xanh nhạt để hòa quyện */
-.hero-section {
-    background-color: #eaf4ff; /* Màu này khớp với đỉnh gradient của .main-content */
-    /* ... giữ nguyên các code cũ ... */
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=2070&auto=format&fit=crop'); 
+    background-size: cover;
+    background-position: center;
+    
+    /* Mờ dần từ trên xuống theo ý bạn */
+    -webkit-mask-image: linear-gradient(to bottom, black 20%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 20%, transparent 100%);
+    z-index: 1;
+}
+
+.hero-section h1 {
+    position: relative; 
+    z-index: 2;
+    color: #1a1a1a; /* Đổi màu chữ sang màu đen xám cho nổi bật trên nền sáng */
+    font-weight: 900;
+    font-size: 36px;
+    text-shadow: 0 2px 15px rgba(255,255,255,0.8); /* Bóng trắng để chữ không bị chìm vào nền */
+    padding: 0 20px;
 }
 
 /* --- Dải màu chuyển tiếp (Gradient) --- */
@@ -161,29 +187,37 @@ body {
 }
 
 .main-content {
-    background-color: #ffffff; /* Nền trắng tinh */
     max-width: 1200px;
     margin: 0 auto;
+    padding: 80px 60px 50px 60px; /* Tăng padding-top lên 80px để đẩy nội dung xuống dưới */
     
-    /* Căn chỉnh lại padding cho đẹp */
-    padding: 60px 60px; 
-    
-    /* 2 đường kẻ dọc Wikipedia */
+    /* 2 đường kẻ dọc Wikipedia (giữ nguyên) */
     border-left: 2px solid #0056b3; 
     border-right: 2px solid #0056b3; 
     
-    /* ĐÂY LÀ ĐIỂM ĂN TIỀN: Gradient từ xanh đậm (giống đuôi ảnh) mờ dần sang trắng */
-    background: linear-gradient(to bottom, #b5d5f5 0%, #ffffff 150px);
+    /* GRADIENT NỀN THEO Ý BẠN */
+    background: linear-gradient(
+        to bottom, 
+        rgba(255, 255, 255, 0) 0%,          /* 0% Transparency 100% white */
+        rgba(173, 192, 232, 0.71) 52%,       /* 52% Transparency 29% ADC0E8 */
+        rgba(173, 192, 232, 0.82) 70%,       /* 70% Transparency 18% ADC0E8 */
+        #C8D5EF 100%                         /* 100% C8D5EF */
+    );
+
+    /* ĐƯỜNG KẺ NGANG Ở TRÊN CÙNG (From center) */
+    /* Dùng border-image để tạo hiệu ứng mờ dần từ giữa ra 2 bên */
+    border-top: 2px solid;
+    border-image: radial-gradient(circle, #ADC0E8 0%, transparent 80%) 1;
     
-    /* Kéo khung này trượt lên trên bức ảnh một chút để che đi đường cắt */
     position: relative;
-    top: -40px; 
 }
+
 .section-title {
     display: flex;
     align-items: baseline;
     gap: 15px;
-    margin-bottom: 20px;
+    margin-top: 30px; /* Thêm dòng này để đẩy chữ xuống dưới một chút */
+    margin-bottom: 30px;
 }
 
 .text-3d {
