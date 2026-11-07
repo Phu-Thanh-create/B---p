@@ -240,3 +240,10 @@ model-viewer {
     outline: none;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
+
+/* Style cho khung ảnh 360 của Pannellum */
+#panorama {
+    width: 100%;
+    height: 600px;
+    background-color: #f0f0f0; /* Màu nền xám nhạt chờ ảnh tải */
+}

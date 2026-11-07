@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang Chính - Lớp 11A2</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Thư viện 3D -->
-   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+    
+    <!-- Thư viện Pannellum để xem ảnh 360 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
 </head>
 <body>
 
@@ -20,29 +22,39 @@
             <a href="#lien-he">Liên hệ</a>
         </nav>
     </header>
+    
     <!-- Phần Xin Chào (Có ảnh nền) -->
     <section id="trang-chu" class="hero-section">
         <div class="hero-bg"></div> <!-- Lớp ảnh nền -->
         <h1>Xin gửi lời chào tới vị khách đã ghé thăm!</h1>
     </section>
 
-        <!-- Phần Nội dung (Ảnh 360) -->
+    <!-- Phần Nội dung (Ảnh 360) -->
     <section id="anh-3d" class="main-content">
-        <        <div class="section-title">
+        
+        <div class="section-title">
             <span class="text-3d">360°</span> <span class="text-sub">Toàn cảnh không gian 11A2!</span>
         </div>
 
-        <!-- Chỉ có mỗi thẻ model-viewer này thôi, không có div nào bọc ngoài -->
-        <model-viewer src="360-test.jpg" 
-                      alt="Ảnh toàn cảnh 360 độ" 
-                      camera-controls 
-                      auto-rotate
-                      style="width: 100%; height: 600px; border-radius: 20px;">
-        </model-viewer>
+        <!-- Khung chứa ảnh 360 của Pannellum -->
+        <div style="border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+            <div id="panorama"></div>
+        </div>
+
+        <!-- Kích hoạt Pannellum -->
+        <script>
+            pannellum.viewer('panorama', {
+                "type": "equirectangular",
+                "panorama": "360-test.jpg", /* Tên file ảnh của bạn */
+                "autoLoad": true,
+                "compass": true,
+                "showControls": true
+            });
+        </script>
 
     </section>
 
-    <!-- Các phần để test cuộn (bạn có thể thêm nội dung sau) -->
+    <!-- Các phần để test cuộn -->
     <section id="gioi-thieu" style="height: 800px; padding: 50px; text-align: center;">
         <h2 style="margin-top: 50px; color: #0056b3;">Giới thiệu</h2>
     </section>
