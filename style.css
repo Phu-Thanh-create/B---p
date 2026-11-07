@@ -206,9 +206,6 @@ body {
         rgba(173, 192, 232, 0.82) 70%,        /* 70% ADC0E8 */
         #C8D5EF 100%                          /* 100% C8D5EF */
     );
-
-    /* Ẩn cái đường kẻ ngang gắt ở trên cùng đi (nếu không muốn có) */
-    border-top: none; 
     
     position: relative;
     z-index: 2;
