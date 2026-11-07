@@ -80,8 +80,7 @@
    CSS CHO TRANG 2 (TRANG-CHINH.HTML)
    ========================================= */
 body {
-    background-color: #f4f7f6; /* Màu xám xanh rất nhạt cho 2 bên rìa */
-    /* ... các code khác giữ nguyên */
+    background-color: #ffffff; /* Đổi nền tổng thành màu trắng */
 }
 /* Thanh Menu */
 .navbar {
@@ -136,32 +135,18 @@ body {
 }
 
 .hero-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    /* ... các code cũ giữ nguyên ... */
+    opacity: 0.4; 
     
-    /* Thay link ảnh của bạn vào đây */
-    background-image: url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=2070&auto=format&fit=crop'); 
-    
-    background-size: cover;
-    background-position: center;
-    opacity: 0.4; /* Bạn có thể tăng lên 0.5 nếu muốn ảnh rõ hơn */
-    
-    /* TẠO HIỆU ỨNG MỜ DẦN XUỐNG DƯỚI */
-    -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
-    mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+    /* Làm mờ dần đuôi ảnh sang màu xanh nhạt */
+    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
 }
 
-.hero-section h1 {
-    position: relative; /* Nổi lên trên ảnh nền */
-    z-index: 2;
-    color: white;
-    font-weight: 900;
-    font-size: 36px;
-    text-shadow: 0 4px 10px rgba(0,0,0,0.5); /* Bóng đổ đậm hơn chút để nổi bật trên ảnh */
-    padding: 0 20px;
+/* Đảm bảo thẻ section chứa ảnh có màu nền xanh nhạt để hòa quyện */
+.hero-section {
+    background-color: #eaf4ff; /* Màu này khớp với đỉnh gradient của .main-content */
+    /* ... giữ nguyên các code cũ ... */
 }
 
 /* --- Dải màu chuyển tiếp (Gradient) --- */
@@ -175,23 +160,25 @@ body {
     background: linear-gradient(to bottom, #eaf4ff 0%, #b5d5f5 50%, #4a90e2 100%);
 }
 
-/* Nội dung chính */
 .main-content {
-    /* Xóa màu nền xanh đi, đổi thành màu trắng */
-    background-color: #ffffff;
-    
-    /* Thiết lập chiều rộng và căn giữa */
+    background-color: #ffffff; /* Nền trắng tinh */
     max-width: 1200px;
-    margin: 0 auto; /* Căn giữa trang */
-    padding: 50px 60px; /* Khoảng cách trên dưới 50px, trái phải 60px */
+    margin: 0 auto;
     
-    /* Tạo 2 đường kẻ dọc 2 bên giống Wikipedia */
-    border-left: 2px solid #0056b3; /* Đường kẻ bên trái màu xanh đậm */
-    border-right: 2px solid #0056b3; /* Đường kẻ bên phải màu xanh đậm */
+    /* Căn chỉnh lại padding cho đẹp */
+    padding: 60px 60px; 
     
-    box-shadow: 0 0 20px rgba(0,0,0,0.05); /* Đổ bóng nhẹ cho khung nổi lên */
+    /* 2 đường kẻ dọc Wikipedia */
+    border-left: 2px solid #0056b3; 
+    border-right: 2px solid #0056b3; 
+    
+    /* ĐÂY LÀ ĐIỂM ĂN TIỀN: Gradient từ xanh đậm (giống đuôi ảnh) mờ dần sang trắng */
+    background: linear-gradient(to bottom, #b5d5f5 0%, #ffffff 150px);
+    
+    /* Kéo khung này trượt lên trên bức ảnh một chút để che đi đường cắt */
+    position: relative;
+    top: -40px; 
 }
-
 .section-title {
     display: flex;
     align-items: baseline;
