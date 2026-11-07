@@ -230,20 +230,11 @@ body {
     color: #000;
 }
 
-/* Khung 3D */
-.model-container {
+/* Chỉnh style cho ảnh 360 hiển thị trực tiếp */
+model-viewer {
     width: 100%;
     height: 600px;
-    background-color: #000;
-    border-radius: 40px 40px 0 0;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.model-container model-viewer {
-    width: 100%;
-    height: 100%;
     outline: none;
+    /* Tạo bóng đổ nhẹ cho bức ảnh nổi lên trên nền web */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
 }

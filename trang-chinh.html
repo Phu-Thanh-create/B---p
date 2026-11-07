@@ -33,15 +33,13 @@
             <span class="text-3d">360°</span> <span class="text-sub">Toàn cảnh không gian 11A2!</span>
         </div>
 
-        <!-- Khung đen chứa ảnh -->
-        <div class="model-container" style="height: 600px; background-color: #000;">
-            
-            <!-- THAY TÊN FILE CỦA BẠN VÀO ĐÂY -->
-            <model-viewer src="https://modelviewer.dev/shared-assets/environments/moon_1k.hdr" 
-              alt="Ảnh 360" 
-              camera-controls 
-              auto-rotate>
-</model-viewer>
+               <!-- Khung chứa ảnh 360 (đã bỏ nền đen) -->
+        <model-viewer src="https://modelviewer.dev/shared-assets/environments/moon_1k.hdr" 
+                      alt="Ảnh toàn cảnh 360 độ" 
+                      camera-controls 
+                      auto-rotate
+                      style="width: 100%; height: 600px; border-radius: 20px; background-color: transparent;">
+        </model-viewer>
             
         </div>
 
