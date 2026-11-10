@@ -207,18 +207,21 @@ body {
     content: "";
     position: absolute;
     top: 0;
-    bottom: 0;
     left: 0;
     right: 0;
-    pointer-events: none; /* Để chuột có thể click xuyên qua */
     
-    /* Tạo 2 đường viền dọc màu xanh */
+    /* CHỈNH CHIỀU CAO: Không cho nó kéo dài hết trang, chỉ cao khoảng 800px thôi */
+    height: 800px; 
+    
+    pointer-events: none;
+    
+    /* Đường kẻ dọc */
     border-left: 2px solid #0056b3;
     border-right: 2px solid #0056b3;
     
-    /* MẸO: Dùng mặt nạ để làm cho 2 đường viền này đậm ở trên và mờ dần xuống dưới */
-    -webkit-mask-image: linear-gradient(to bottom, black 20%, transparent 100%);
-    mask-image: linear-gradient(to bottom, black 20%, transparent 100%);
+    /* Sửa lại hướng mờ: Đậm ở trên (0%), mờ dần ở dưới (100%) */
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
 }
 .section-title {
     display: flex;
