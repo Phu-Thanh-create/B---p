@@ -202,31 +202,35 @@ body {
     z-index: 2;
 }
 
-/* Sử dụng thẻ ::before để tạo 2 đường kẻ dọc có hiệu ứng mờ dần */
 .main-content::before {
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
     
-    /* Giữ padding này để đẩy nội dung xuống */
-    padding: 100px 60px 50px 60px; 
+    /* --- DỜI XUỐNG DƯỚI --- */
+    /* Tăng số 0 lên để dời xuống (ví dụ: 50px, 100px, 200px...) */
+    top: 100px; 
     
-    /* CHỈNH CHIỀU CAO: Không cho nó kéo dài hết trang, chỉ cao khoảng 800px thôi */
+    /* --- CHỈNH VỊ TRÍ NGANG (Trái/Phải) --- */
+    width: 100%;
+    max-width: 1200px; 
+    left: 50%;
+    transform: translateX(-50%);
+    
+    /* --- CHIỀU CAO --- */
+    /* Nếu bạn dời top xuống 100px, hãy tăng height lên tương ứng để nó không bị hụt chân */
     height: 800px; 
     
     pointer-events: none;
     
-        /* Đường kẻ dọc */
+    /* Đường kẻ dọc */
     border-left: 2px solid #0056b3;
     border-right: 2px solid #0056b3;
     
-    /* Đảo ngược: Mờ dần ở trên (0%), đậm dần ở dưới (100%) */
+    /* Mờ dần ở trên, đậm dần ở dưới */
     -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 100%);
     mask-image: linear-gradient(to bottom, transparent 0%, black 100%);
 }
+
 .section-title {
     display: flex;
     align-items: baseline;
