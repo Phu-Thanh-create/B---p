@@ -1,274 +1,109 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang Chính - Lớp 11A2</title>
-    <link rel="stylesheet" href="style.css">
-    
-    <!-- Thư viện Pannellum -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-    
-    <style>
-        /* CSS cho từng khung ảnh 360 */
-        .pano-block { margin-bottom: 50px; }
-        .pano-title {
-            font-size: 24px; font-weight: bold; color: #0056b3;
-            margin-bottom: 15px; padding-left: 10px; border-left: 5px solid #ff9a44;
-        }
-        .pano-wrapper { border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); position: relative; }
-        .pano-viewer { width: 100%; height: 600px; }
-        .pano-controls {
-            position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 10;
-            background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1); display: flex; align-items: center;
-            padding: 8px; border-radius: 16px; gap: 8px;
-        }
-        .pano-btn {
-            cursor: pointer; border: none; background: transparent; color: #cbd5e1;
-            width: 44px; height: 44px; border-radius: 8px; display: flex;
-            justify-content: center; align-items: center; transition: 0.2s;
-        }
-        .pano-btn:hover { background: rgba(255,255,255,0.1); }
-        .pano-btn.btn-play { background: #4f46e5; color: white; }
-
-        /* CSS Bố cục so le cho phần Thành tích */
-        .achievement-row {
-            display: flex; align-items: center; gap: 30px; margin-bottom: 40px; flex-wrap: wrap;
-        }
-        .achievement-col { flex: 1; min-width: 300px; }
-        .achievement-col-full {
-            display: flex; flex-direction: column; align-items: center; margin-bottom: 40px;
-        }
-        .achievement-img {
-            width: 100%; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); object-fit: cover;
-        }
-        /* Khung chờ ảnh (nếu chưa có ảnh) */
-        .img-placeholder {
-            width: 100%; height: 300px; background-color: #e2e8f0; border-radius: 10px;
-            display: flex; justify-content: center; align-items: center;
-            color: #64748b; font-weight: bold; border: 2px dashed #cbd5e1;
-        }
-    </style>
-</head>
-<body>
-
-    <header class="navbar">
-        <div class="logo">Lớp 11A2</div>
-        <nav class="nav-links">
-            <a href="index.html">Trang chủ</a>
-            <a href="#anh-3d">Ảnh 3D</a>
-            <a href="#thanh-tich">Tổng quan</a>
-            <a href="#lien-he">Liên hệ</a>
-        </nav>
-    </header>
-    
-    <section id="trang-chu" class="hero-section">
-        <div class="hero-bg"></div>
-        <h1>Xin gửi lời chào tới vị khách đã ghé thăm!</h1>
-    </section>
-
-    <section id="anh-3d" class="main-content">
-        
-        <div class="section-title">
-            <span class="text-3d">360°</span> <span class="text-sub">Một vài tấm ảnh đặc biệt từ chúng tôi!</span>
-        </div>
-
-        <!-- KHUNG 1: Cổng trường -->
-        <div class="pano-block">
-            <div class="pano-title">1. Cổng trường</div>
-            <div class="pano-wrapper">
-                <div id="pano1" class="pano-viewer"></div>
-                <div class="pano-controls">
-                    <button onclick="toggleAutoRotate('pano1', this)" class="pano-btn btn-play"><i class="fa-solid fa-pause"></i></button>
-                    <div style="width: 1px; height: 24px; background: #334155; margin: 0 4px;"></div>
-                    <button onclick="zoomIn('pano1')" class="pano-btn"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-                    <button onclick="zoomOut('pano1')" class="pano-btn"><i class="fa-solid fa-magnifying-glass-minus"></i></button>
-                    <button onclick="resetView('pano1')" class="pano-btn"><i class="fa-solid fa-arrows-to-dot"></i></button>
-                </div>
-            </div>
-        </div>
-
-        <!-- KHUNG 2: Khu A -->
-        <div class="pano-block">
-            <div class="pano-title">2. Khu A</div>
-            <div class="pano-wrapper">
-                <div id="pano2" class="pano-viewer"></div>
-                <div class="pano-controls">
-                    <button onclick="toggleAutoRotate('pano2', this)" class="pano-btn btn-play"><i class="fa-solid fa-pause"></i></button>
-                    <div style="width: 1px; height: 24px; background: #334155; margin: 0 4px;"></div>
-                    <button onclick="zoomIn('pano2')" class="pano-btn"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-                    <button onclick="zoomOut('pano2')" class="pano-btn"><i class="fa-solid fa-magnifying-glass-minus"></i></button>
-                    <button onclick="resetView('pano2')" class="pano-btn"><i class="fa-solid fa-arrows-to-dot"></i></button>
-                </div>
-            </div>
-        </div>
-
-        <!-- KHUNG 3: Khu B -->
-        <div class="pano-block">
-            <div class="pano-title">3. Khu B</div>
-            <div class="pano-wrapper">
-                <div id="pano3" class="pano-viewer"></div>
-                <div class="pano-controls">
-                    <button onclick="toggleAutoRotate('pano3', this)" class="pano-btn btn-play"><i class="fa-solid fa-pause"></i></button>
-                    <div style="width: 1px; height: 24px; background: #334155; margin: 0 4px;"></div>
-                    <button onclick="zoomIn('pano3')" class="pano-btn"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-                    <button onclick="zoomOut('pano3')" class="pano-btn"><i class="fa-solid fa-magnifying-glass-minus"></i></button>
-                    <button onclick="resetView('pano3')" class="pano-btn"><i class="fa-solid fa-arrows-to-dot"></i></button>
-                </div>
-            </div>
-        </div>
-
-        <!-- KHUNG 4: Phòng truyền thống -->
-        <div class="pano-block">
-            <div class="pano-title">4. Phòng truyền thống</div>
-            <div class="pano-wrapper">
-                <div id="pano4" class="pano-viewer"></div>
-                <div class="pano-controls">
-                    <button onclick="toggleAutoRotate('pano4', this)" class="pano-btn btn-play"><i class="fa-solid fa-pause"></i></button>
-                    <div style="width: 1px; height: 24px; background: #334155; margin: 0 4px;"></div>
-                    <button onclick="zoomIn('pano4')" class="pano-btn"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-                    <button onclick="zoomOut('pano4')" class="pano-btn"><i class="fa-solid fa-magnifying-glass-minus"></i></button>
-                    <button onclick="resetView('pano4')" class="pano-btn"><i class="fa-solid fa-arrows-to-dot"></i></button>
-                </div>
-            </div>
-        </div>
-
         <!-- Phần Thành tích của trường -->
-        <div class="section-title" style="margin-top: 80px; margin-bottom: 20px;">
+        <div id="thanh-tich" class="section-title" style="margin-top: 80px; margin-bottom: 20px;">
             <span class="text-3d">🏆</span> <span class="text-sub">Thành tích của trường</span>
         </div>
 
+        <!-- Khung chứa văn bản thành tích -->
         <div class="text-content-box" style="font-size: 16px; line-height: 1.8; color: #333; padding-bottom: 50px;">
             
-            <!-- Mục 1: Ảnh bên trái, chữ bên phải -->
+            <!-- Mục 1 -->
             <h3 style="color: #0056b3; font-size: 20px; margin-bottom: 10px; margin-top: 20px;">1. Đạt chuẩn Quốc gia mức độ 2</h3>
             <div class="achievement-row">
                 <div class="achievement-col">
-                    <!-- THAY TÊN FILE ẢNH VÀO ĐÂY -->
-                    <img src="anh-1.png" alt="Lễ đón bằng công nhận" class="achievement-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="img-placeholder" style="display: none;">[Ảnh 1: Lễ đón bằng công nhận]</div>
+                    <img src="anh-1.png" alt="Lễ đón bằng công nhận" class="achievement-img">
                 </div>
                 <div class="achievement-col" style="text-align: justify;">
                     <p>Trường THPT Nguyễn Văn Thoại đã đón nhận Bằng công nhận trường đạt chuẩn quốc gia mức độ 2 theo Quyết định 1754, ngày 31/10/2023 của Chủ tịch UBND tỉnh An Giang. Bộ Giáo dục và Đào tạo tặng Bằng khen cho tập thể trường, vì đã có thành tích tiêu biểu, xuất sắc trong phong trào thi đua “Đổi mới sáng tạo trong quản lý, giảng dạy và học tập” năm học 2022-2023.</p>
                 </div>
             </div>
+            <!-- Ảnh thêm cuối mục 1 -->
+            <div class="achievement-col-full" style="margin-top: 20px; margin-bottom: 40px;">
+                <div style="width: 80%; max-width: 800px;">
+                    <img src="anh-1-2.png" alt="Bằng công nhận" class="achievement-img">
+                </div>
+            </div>
 
-            <!-- Mục 2: Chữ ở trên, ảnh ở giữa dưới -->
-            <h3 style="color: #0056b3; font-size: 20px; margin-bottom: 10px; margin-top: 30px;">2. Thành tích học sinh giỏi</h3>
+            <!-- Mục 2 -->
+            <h3 style="color: #0056b3; font-size: 20px; margin-bottom: 10px; margin-top: 40px;">2. Thành tích học sinh giỏi</h3>
             <div class="achievement-col-full">
                 <div style="width: 100%; text-align: justify; margin-bottom: 20px;">
                     <p>Trong một năm học gần đây, trường có 27 học sinh đạt giải học sinh giỏi văn hóa cấp tỉnh (gồm 4 giải Nhì, 8 giải Ba và 15 giải Khuyến khích).</p>
                 </div>
                 <div style="width: 80%; max-width: 800px;">
-                    <!-- THAY TÊN FILE ẢNH VÀO ĐÂY -->
-                    <img src="anh-2.png" alt="Lễ tuyên dương học sinh giỏi" class="achievement-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="img-placeholder" style="display: none;">[Ảnh 2: Lễ tuyên dương học sinh giỏi]</div>
+                    <img src="anh-2.png" alt="Lễ tuyên dương học sinh giỏi" class="achievement-img">
                 </div>
             </div>
 
             <!-- Mục 3 -->
-            <h3 style="color: #0056b3; font-size: 20px; margin-bottom: 10px; margin-top: 30px;">3. Chất lượng giáo dục toàn diện</h3>
-            <p style="margin-bottom: 15px; text-align: justify;">
+            <h3 style="color: #0056b3; font-size: 20px; margin-bottom: 10px; margin-top: 40px;">3. Chất lượng giáo dục toàn diện</h3>
+            <p style="margin-bottom: 20px; text-align: justify;">
                 Tỷ lệ học sinh đạt học lực khá, giỏi duy trì ở mức cao qua các năm (ví dụ năm học 2023–2024 có 41,3% học sinh đạt loại giỏi và 44,56% loại khá).
             </p>
+            <!-- Ảnh mục 3 -->
+            <div class="achievement-col-full" style="margin-bottom: 40px;">
+                <div style="width: 80%; max-width: 800px;">
+                    <img src="anh-3.png" alt="Chất lượng giáo dục" class="achievement-img">
+                </div>
+            </div>
 
             <!-- Mục 4 -->
-            <h3 style="color: #0056b3; font-size: 20px; margin-bottom: 10px; margin-top: 30px;">4. Kết quả thi Tốt nghiệp và Đại học</h3>
+            <h3 style="color: #0056b3; font-size: 20px; margin-bottom: 10px; margin-top: 40px;">4. Kết quả thi Tốt nghiệp và Đại học</h3>
             <p style="margin-bottom: 15px; text-align: justify;">
                 Tỉ lệ học sinh khá giỏi cao hơn năm trước, kết quả tốt nghiệp THPT đạt tỷ lệ 99,74%; tỷ lệ đậu Đại học đợt 1 gần 60% trên tổng số học sinh đậu tốt nghiệp THPT 2024. Học sinh giỏi cấp tỉnh có 17 học sinh (1 giải nhất, 2 giải nhì, 7 giải ba và 7 giải khuyến khích). Tham gia cuộc thi Gen Z làm chủ công nghệ số đạt 1 giải nhì và 2 giải khuyến khích; 1 học sinh đạt thành tích xuất sắc hội thi Olympic tiếng Anh của tỉnh đoàn, ngoài ra có 2 học sinh đạt giải ba Đại Sứ Văn hóa đọc do thư viện tỉnh tổ chức. Với những thành tích trên nhà trường được Sở Giáo dục và Đào tạo công nhận tập thể Hoàn thành xuất sắc nhiệm vụ năm học 2023-2024.
             </p>
+            <!-- Ảnh mục 4 -->
+            <div class="achievement-col-full" style="margin-bottom: 40px;">
+                <div style="width: 80%; max-width: 800px;">
+                    <img src="anh-4.png" alt="Kết quả tốt nghiệp" class="achievement-img">
+                </div>
+            </div>
 
             <!-- Mục 5 -->
-            <h3 style="color: #0056b3; font-size: 20px; margin-bottom: 10px; margin-top: 30px;">5. Danh hiệu "Học sinh 3 tốt"</h3>
-            <p style="margin-bottom: 15px; text-align: justify;">
+            <h3 style="color: #0056b3; font-size: 20px; margin-bottom: 10px; margin-top: 40px;">5. Danh hiệu "Học sinh 3 tốt"</h3>
+            <p style="margin-bottom: 20px; text-align: justify;">
                 Có học sinh đạt danh hiệu "Học sinh 3 tốt" cấp tỉnh An Giang, đạt thành tích cao trong các cuộc thi nghiên cứu khoa học, Đại sứ Văn hóa đọc, Olympic tiếng Anh và phong trào an toàn giao thông, bảo vệ sức khỏe cấp tỉnh.
             </p>
+            <!-- Ảnh mục 5 -->
+            <div class="achievement-col-full" style="margin-bottom: 40px;">
+                <div style="width: 80%; max-width: 800px;">
+                    <img src="anh-5.png" alt="Học sinh 3 tốt" class="achievement-img">
+                </div>
+            </div>
 
-            <!-- Mục 6: Chữ ở trên, ảnh ở giữa dưới -->
-            <h3 style="color: #0056b3; font-size: 20px; margin-bottom: 10px; margin-top: 30px;">6. Danh hiệu tập thể lao động tiên tiến</h3>
-            <div class="achievement-col-full">
+            <!-- Mục 6: 8 tấm ảnh xếp dọc -->
+            <h3 style="color: #0056b3; font-size: 20px; margin-bottom: 10px; margin-top: 40px;">6. Danh hiệu tập thể lao động tiên tiến</h3>
+            <div class="achievement-col-full" style="margin-bottom: 40px;">
                 <div style="width: 100%; text-align: justify; margin-bottom: 20px;">
                     <p>Ghi nhận sự nỗ lực của các tổ bộ môn: Tổ Địa lý (2016-2017), Tổ Thể dục (2015-2016), Tổ GDCD (2014-2015), Tổ Ngữ văn (2015-2016), Tổ Toán học (2018-2019), Tổ Lịch sử (2019-2020), Tổ Vật lý (2016-2017) đều đạt danh hiệu Tập thể Lao động tiên tiến.</p>
                 </div>
-                <div style="width: 80%; max-width: 800px;">
-                    <!-- THAY TÊN FILE ẢNH VÀO ĐÂY -->
-                    <img src="anh-3.png" alt="Bằng khen tập thể lao động tiên tiến" class="achievement-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="img-placeholder" style="display: none;">[Ảnh 3: Bằng khen tập thể lao động tiên tiến]</div>
+                <div style="width: 80%; max-width: 800px; display: flex; flex-direction: column; gap: 15px;">
+                    <img src="anh-6-1.png" alt="Bằng khen 1" class="achievement-img">
+                    <img src="anh-6-2.png" alt="Bằng khen 2" class="achievement-img">
+                    <img src="anh-6-3.png" alt="Bằng khen 3" class="achievement-img">
+                    <img src="anh-6-4.png" alt="Bằng khen 4" class="achievement-img">
+                    <img src="anh-6-5.png" alt="Bằng khen 5" class="achievement-img">
+                    <img src="anh-6-6.png" alt="Bằng khen 6" class="achievement-img">
+                    <img src="anh-6-7.png" alt="Bằng khen 7" class="achievement-img">
+                    <img src="anh-6-8.png" alt="Bằng khen 8" class="achievement-img">
                 </div>
             </div>
 
             <!-- Mục 7 -->
-            <h3 style="color: #0056b3; font-size: 20px; margin-bottom: 10px; margin-top: 30px;">7. Đẩy mạnh chuyển đổi số trong giáo dục</h3>
-            <p style="margin-bottom: 15px; text-align: justify;">
+            <h3 style="color: #0056b3; font-size: 20px; margin-bottom: 10px; margin-top: 40px;">7. Đẩy mạnh chuyển đổi số trong giáo dục</h3>
+            <p style="margin-bottom: 20px; text-align: justify;">
                 Trong năm học 2025–2026, 100% giáo viên sử dụng công nghệ thông tin trong giảng dạy; nhà trường cũng ứng dụng hồ sơ điện tử và các công cụ trí tuệ nhân tạo để hỗ trợ công tác quản lý, dạy học.
             </p>
-
-            <!-- Mục 8: Ảnh bên trái, chữ bên phải -->
-            <h3 style="color: #0056b3; font-size: 20px; margin-bottom: 10px; margin-top: 30px;">8. Thư viện và Hỗ trợ học sinh</h3>
-            <div class="achievement-row">
-                <div class="achievement-col" style="text-align: justify; order: 2;">
-                    <p>Duy trì hiệu quả mô hình thư viện và hỗ trợ học sinh: Triển khai mô hình “Thư viện góc lớp” tại 36 lớp học. Vận động hỗ trợ học sinh có hoàn cảnh khó khăn vươn lên trong học tập.</p>
-                </div>
-                <div class="achievement-col" style="order: 1;">
-                    <!-- THAY TÊN FILE ẢNH VÀO ĐÂY -->
-                    <img src="anh-4.png" alt="Hoạt động thư viện và hỗ trợ học sinh" class="achievement-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="img-placeholder" style="display: none;">[Ảnh 4: Hoạt động thư viện]</div>
+            
+            <!-- Mục 8 -->
+            <h3 style="color: #0056b3; font-size: 20px; margin-bottom: 10px; margin-top: 40px;">8. Thư viện và Hỗ trợ học sinh</h3>
+            <p style="margin-bottom: 20px; text-align: justify;">
+                Duy trì hiệu quả mô hình thư viện và hỗ trợ học sinh: Triển khai mô hình “Thư viện góc lớp” tại 36 lớp học. Vận động hỗ trợ học sinh có hoàn cảnh khó khăn vươn lên trong học tập.
+            </p>
+            <!-- Ảnh mục 8 -->
+            <div class="achievement-col-full" style="margin-bottom: 40px;">
+                <div style="width: 80%; max-width: 800px;">
+                    <img src="anh-8.jpg" alt="Thư viện và hỗ trợ" class="achievement-img">
                 </div>
             </div>
 
         </div>
-
-        <!-- Script điều khiển Pannellum -->
-        <script>
-            const viewers = {};
-            const autoRotateStates = {};
-
-            window.addEventListener('load', function() {
-                initPano('pano1', 'cong-truong.jpg');
-                initPano('pano2', 'khu-a.jpg');
-                initPano('pano3', 'khu-b.jpg');
-                initPano('pano4', 'nha-tt.jpg'); // Nhớ đổi tên file này nếu bạn đặt tên khác cho Phòng truyền thống nhé
-            });
-
-            function initPano(id, imageSrc) {
-                viewers[id] = pannellum.viewer(id, {
-                    "type": "equirectangular", "panorama": imageSrc,
-                    "autoLoad": true, "autoRotate": -2, "autoRotateInactivityDelay": 3000,
-                    "showControls": false, "hfov": 100
-                });
-                autoRotateStates[id] = true;
-                viewers[id].on('load', function() { autoRotateStates[id] = true; updateBtnIcon(id); });
-            }
-
-            function toggleAutoRotate(id, btn) {
-                if (!viewers[id]) return;
-                if (autoRotateStates[id]) { viewers[id].stopAutoRotate(); autoRotateStates[id] = false; }
-                else { viewers[id].startAutoRotate(-2); autoRotateStates[id] = true; }
-                updateBtnIcon(id);
-            }
-
-            function updateBtnIcon(id) {
-                const viewerDiv = document.getElementById(id);
-                const btn = viewerDiv.parentElement.querySelector('.btn-play');
-                const icon = btn.querySelector('i');
-                if (autoRotateStates[id]) { icon.className = "fa-solid fa-pause"; btn.style.background = "#4f46e5"; }
-                else { icon.className = "fa-solid fa-play"; btn.style.background = "transparent"; }
-            }
-
-            function zoomIn(id) { if (viewers[id]) viewers[id].setHfov(viewers[id].getHfov() - 15); }
-            function zoomOut(id) { if (viewers[id]) viewers[id].setHfov(viewers[id].getHfov() + 15); }
-            function resetView(id) { if (viewers[id]) { viewers[id].setPitch(0); viewers[id].setYaw(0); viewers[id].setHfov(100); } }
-        </script>
-
-    </section>
-
-    <section id="lien-he" style="height: 800px; padding: 50px; text-align: center;">
-        <h2 style="margin-top: 50px; color: #0056b3;">Liên hệ</h2>
-    </section>
-
-    <script src="script.js"></script>
-</body>
-</html>
