@@ -248,15 +248,15 @@
         <div class="text-content-box" style="font-size: 18px; line-height: 1.8; color: #333; padding-bottom: 50px;">
             
             <!-- Bố cục 2 cột: Ảnh xưa bên trái, chữ bên phải -->
-            <div class="achievement-row">
-                <div class="achievement-col">
+            <<div class="achievement-row" style="align-items: flex-start; gap: 30px;">
+                <div class="achievement-col" style="flex: 1; min-width: 300px;">
                     <div style="display: flex; flex-direction: column; gap: 15px;">
                         <img src="csvc1.png" alt="Khuôn viên khu A xưa" class="achievement-img">
                         <img src="csvc2.png" alt="Cổng trường xưa" class="achievement-img">
                     </div>
                 </div>
 
-                <div class="achievement-col" style="text-align: justify;">
+                <div class="achievement-col" style="flex: 1; min-width: 300px; text-align: justify;">
                     <p style="margin-bottom: 10px;"><strong>Lúc trước:</strong></p>
                     <ul style="margin-left: 20px; margin-bottom: 15px;">
                         <li><strong>Quy mô:</strong> còn khá nhỏ, đường đi còn khá trơn trượt, ngập lụt vào mùa mưa, các toà nhà học chưa được khai trang, chưa bố trí đầy đủ phòng bộ môn Lí, Hoá, Sinh, Tin học, Tiếng Anh,...</li>
@@ -333,12 +333,11 @@
                     </div>
                 </div>
                 
-                <!-- Nút bấm Xem Thêm -->
-                <button onclick="document.getElementById('more-images').style.display='flex'; this.style.display='none';" 
+                                <!-- Nút bấm Xem Thêm / Thu Gọn -->
+                <button id="toggle-gallery-btn" onclick="toggleGallery()" 
                         style="margin-top: 20px; padding: 12px 30px; background-color: #0056b3; color: white; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; font-weight: bold; transition: 0.3s;">
                     Xem thêm ảnh lịch sử ▼
                 </button>
-            </div>
 
         <!-- Script điều khiển Pannellum -->
         <script>
@@ -389,5 +388,23 @@
     </section>
 
     <script src="script.js"></script>
+            <script>
+            function toggleGallery() {
+                const moreImages = document.getElementById('more-images');
+                const btn = document.getElementById('toggle-gallery-btn');
+                
+                if (moreImages.style.display === 'none' || moreImages.style.display === '') {
+                    // Hiện ảnh ra
+                    moreImages.style.display = 'flex';
+                    btn.innerHTML = 'Thu gọn ảnh lịch sử ▲';
+                    btn.style.backgroundColor = '#475569'; // Đổi màu nút cho khác biệt
+                } else {
+                    // Ẩn ảnh đi
+                    moreImages.style.display = 'none';
+                    btn.innerHTML = 'Xem thêm ảnh lịch sử ▼';
+                    btn.style.backgroundColor = '#0056b3'; // Đổi lại màu xanh ban đầu
+                }
+            }
+        </script>
 </body>
 </html>
