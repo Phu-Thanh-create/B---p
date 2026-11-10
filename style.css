@@ -206,19 +206,15 @@ body {
     content: "";
     position: absolute;
     
-    /* --- DỜI XUỐNG DƯỚI --- */
-    /* Tăng số 0 lên để dời xuống (ví dụ: 50px, 100px, 200px...) */
-    top: 170px; 
+    /* Đặt vị trí bắt đầu từ trên cùng của khung nội dung */
+    top: 0;
+    bottom: 0; /* Kéo dài xuống tận đáy của khung */
     
-    /* --- CHỈNH VỊ TRÍ NGANG (Trái/Phải) --- */
-    width: 100%;
-    max-width: 1200px; 
+    /* Căn giữa 2 đường kẻ */
     left: 50%;
     transform: translateX(-50%);
-    
-    /* --- CHIỀU CAO --- */
-    /* Nếu bạn dời top xuống 100px, hãy tăng height lên tương ứng để nó không bị hụt chân */
-    height: 800px; 
+    width: 100%;
+    max-width: 1200px; /* Độ rộng của 2 đường kẻ (bạn có thể sửa số này cho rộng ra hoặc hẹp lại) */
     
     pointer-events: none;
     
@@ -226,7 +222,7 @@ body {
     border-left: 2px solid #0056b3;
     border-right: 2px solid #0056b3;
     
-    /* Mờ dần ở trên, đậm dần ở dưới */
+    /* Hiệu ứng mờ dần (nếu bạn muốn giữ) */
     -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 100%);
     mask-image: linear-gradient(to bottom, transparent 0%, black 100%);
 }
