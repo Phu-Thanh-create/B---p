@@ -209,6 +209,11 @@ body {
     top: 0;
     left: 0;
     right: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    
+    /* Giữ padding này để đẩy nội dung xuống */
+    padding: 100px 60px 50px 60px; 
     
     /* CHỈNH CHIỀU CAO: Không cho nó kéo dài hết trang, chỉ cao khoảng 800px thôi */
     height: 800px; 
