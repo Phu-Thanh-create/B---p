@@ -206,7 +206,9 @@ body {
 .main-content::before {
     content: "";
     position: absolute;
-    max-width: 1200px;
+    top: 0;
+    left: 0;
+    right: 0;
     margin: 0 auto;
     
     /* Giữ padding này để đẩy nội dung xuống */
