@@ -9,6 +9,7 @@
     <!-- Thư viện Pannellum để xem ảnh 360 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 </head>
 <body>
 
@@ -38,15 +39,110 @@
 
             <div id="panorama"></div>
 
-        <!-- Kích hoạt Pannellum -->
+               <!-- Trình xem ảnh 360 nhúng trực tiếp -->
+        <div style="border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); position: relative;">
+            <!-- Khung chứa ảnh -->
+            <div id="panorama" style="width: 100%; height: 600px;"></div>
+            
+            <!-- Thanh công cụ nổi ở dưới -->
+            <div class="glass-panel p-2 rounded-2xl flex items-center space-x-2 shadow-2xl" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 10; background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1);">
+                <!-- Nút Bật/Tắt xoay -->
+                <button id="btn-rotate" onclick="toggleAutoRotate()" class="p-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl transition-all shadow-lg flex items-center justify-center w-11 h-11" title="Bật/Tắt tự động xoay" style="cursor: pointer; border: none;">
+                    <i id="icon-rotate" class="fa-solid fa-pause"></i>
+                </button>
+                <div style="width: 1px; height: 24px; background: #334155; margin: 0 8px;"></div>
+                <!-- Nút Phóng to -->
+                <button onclick="zoomIn()" class="p-3 hover:bg-slate-800 text-slate-300 hover:text-white rounded-xl transition-all flex items-center justify-center w-11 h-11" title="Phóng to" style="cursor: pointer; border: none; background: transparent;">
+                    <i class="fa-solid fa-magnifying-glass-plus"></i>
+                </button>
+                <!-- Nút Thu nhỏ -->
+                <button onclick="zoomOut()" class="p-3 hover:bg-slate-800 text-slate-300 hover:text-white rounded-xl transition-all flex items-center justify-center w-11 h-11" title="Thu nhỏ" style="cursor: pointer; border: none; background: transparent;">
+                    <i class="fa-solid fa-magnifying-glass-minus"></i>
+                </button>
+                <!-- Nút Reset -->
+                <button onclick="resetView()" class="p-3 hover:bg-slate-800 text-slate-300 hover:text-white rounded-xl transition-all flex items-center justify-center w-11 h-11" title="Về vị trí gốc" style="cursor: pointer; border: none; background: transparent;">
+                    <i class="fa-solid fa-arrows-to-dot"></i>
+                </button>
+                <div style="width: 1px; height: 24px; background: #334155; margin: 0 8px;"></div>
+                <!-- Nút Fullscreen -->
+                <button onclick="toggleFullscreen()" class="p-3 hover:bg-slate-800 text-slate-300 hover:text-white rounded-xl transition-all flex items-center justify-center w-11 h-11" title="Toàn màn hình" style="cursor: pointer; border: none; background: transparent;">
+                    <i id="icon-fullscreen" class="fa-solid fa-expand"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Script điều khiển Pannellum -->
         <script>
-            pannellum.viewer('panorama', {
-                "type": "equirectangular",
-                "panorama": "https://pannellum.org/images/alma.jpg", /* Tên file ảnh của bạn */
-                "autoLoad": true,
-                "compass": true,
-                "showControls": true
+            let viewer;
+            let isAutoRotating = true;
+            
+            // Đường dẫn tới ảnh của bạn
+            const defaultPanorama = "360-test.jpg"; 
+
+            window.addEventListener('load', function() {
+                viewer = pannellum.viewer('panorama', {
+                    "type": "equirectangular",
+                    "panorama": defaultPanorama,
+                    "autoLoad": true,
+                    "autoRotate": -2,
+                    "autoRotateInactivityDelay": 3000,
+                    "showControls": false,
+                    "hfov": 100,
+                    "compass": false
+                });
+
+                viewer.on('load', function() {
+                    isAutoRotating = true;
+                    updateRotateIcon();
+                });
             });
+
+            function toggleAutoRotate() {
+                if (!viewer) return;
+                if (isAutoRotating) {
+                    viewer.stopAutoRotate();
+                    isAutoRotating = false;
+                } else {
+                    viewer.startAutoRotate(-2);
+                    isAutoRotating = true;
+                }
+                updateRotateIcon();
+            }
+
+            function updateRotateIcon() {
+                const icon = document.getElementById('icon-rotate');
+                const btn = document.getElementById('btn-rotate');
+                if (isAutoRotating) {
+                    icon.className = "fa-solid fa-pause";
+                    btn.style.background = "#4f46e5"; // Màu xanh tím (indigo-600)
+                } else {
+                    icon.className = "fa-solid fa-play";
+                    btn.style.background = "#1e293b"; // Màu xám đen (slate-800)
+                }
+            }
+
+            function zoomIn() { if (viewer) viewer.setHfov(viewer.getHfov() - 15); }
+            function zoomOut() { if (viewer) viewer.setHfov(viewer.getHfov() + 15); }
+            
+            function resetView() { 
+                if (viewer) {
+                    viewer.setPitch(0); 
+                    viewer.setYaw(0); 
+                    viewer.setHfov(100); 
+                }
+            }
+
+            function toggleFullscreen() {
+                if (!document.fullscreenElement) {
+                    document.documentElement.requestFullscreen().catch(err => console.log(err));
+                    document.getElementById('icon-fullscreen').className = "fa-solid fa-compress";
+                } else {
+                    if (document.exitFullscreen) {
+                        document.exitFullscreen();
+                        document.getElementById('icon-fullscreen').className = "fa-solid fa-expand";
+                    }
+                }
+            }
         </script>
 
     </section>
