@@ -6,14 +6,13 @@
     <title>Trang Chính - Lớp 11A2</title>
     <link rel="stylesheet" href="style.css">
     
-    <!-- Thư viện Pannellum để xem ảnh 360 -->
+    <!-- Thư viện Pannellum -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 </head>
 <body>
 
-    <!-- Thanh Menu (Cố định) -->
     <header class="navbar">
         <div class="logo">Lớp 11A2</div>
         <nav class="nav-links">
@@ -24,58 +23,40 @@
         </nav>
     </header>
     
-    <!-- Phần Xin Chào (Có ảnh nền) -->
     <section id="trang-chu" class="hero-section">
-        <div class="hero-bg"></div> <!-- Lớp ảnh nền -->
+        <div class="hero-bg"></div>
         <h1>Xin gửi lời chào tới vị khách đã ghé thăm!</h1>
     </section>
 
-    <!-- Phần Nội dung (Ảnh 360) -->
     <section id="anh-3d" class="main-content">
         
         <div class="section-title">
             <span class="text-3d">360°</span> <span class="text-sub">Một vài tấm ảnh đặc biệt từ chúng tôi!</span>
         </div>
 
-               <!-- Trình xem ảnh 360 nhúng trực tiếp -->
+        <!-- Khung chứa ảnh 360 -->
         <div style="border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); position: relative;">
-            <!-- Khung chứa ảnh -->
+            <!-- CHỈ CÓ DUY NHẤT 1 THẺ PANORAMA NÀY THÔI -->
             <div id="panorama" style="width: 100%; height: 600px;"></div>
             
-            <!-- Thanh công cụ nổi ở dưới -->
-            <div class="glass-panel p-2 rounded-2xl flex items-center space-x-2 shadow-2xl" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 10; background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1);">
-                <!-- Nút Bật/Tắt xoay -->
-                <button id="btn-rotate" onclick="toggleAutoRotate()" class="p-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl transition-all shadow-lg flex items-center justify-center w-11 h-11" title="Bật/Tắt tự động xoay" style="cursor: pointer; border: none;">
+            <!-- Thanh công cụ nổi -->
+            <div style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 10; background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); display: flex; align-items: center; padding: 8px; border-radius: 16px; gap: 8px;">
+                <button onclick="toggleAutoRotate()" style="cursor: pointer; border: none; background: #4f46e5; color: white; border-radius: 8px; width: 44px; height: 44px; display: flex; justify-content: center; align-items: center;">
                     <i id="icon-rotate" class="fa-solid fa-pause"></i>
                 </button>
-                <div style="width: 1px; height: 24px; background: #334155; margin: 0 8px;"></div>
-                <!-- Nút Phóng to -->
-                <button onclick="zoomIn()" class="p-3 hover:bg-slate-800 text-slate-300 hover:text-white rounded-xl transition-all flex items-center justify-center w-11 h-11" title="Phóng to" style="cursor: pointer; border: none; background: transparent;">
-                    <i class="fa-solid fa-magnifying-glass-plus"></i>
-                </button>
-                <!-- Nút Thu nhỏ -->
-                <button onclick="zoomOut()" class="p-3 hover:bg-slate-800 text-slate-300 hover:text-white rounded-xl transition-all flex items-center justify-center w-11 h-11" title="Thu nhỏ" style="cursor: pointer; border: none; background: transparent;">
-                    <i class="fa-solid fa-magnifying-glass-minus"></i>
-                </button>
-                <!-- Nút Reset -->
-                <button onclick="resetView()" class="p-3 hover:bg-slate-800 text-slate-300 hover:text-white rounded-xl transition-all flex items-center justify-center w-11 h-11" title="Về vị trí gốc" style="cursor: pointer; border: none; background: transparent;">
-                    <i class="fa-solid fa-arrows-to-dot"></i>
-                </button>
-                <div style="width: 1px; height: 24px; background: #334155; margin: 0 8px;"></div>
-                <!-- Nút Fullscreen -->
-                <button onclick="toggleFullscreen()" class="p-3 hover:bg-slate-800 text-slate-300 hover:text-white rounded-xl transition-all flex items-center justify-center w-11 h-11" title="Toàn màn hình" style="cursor: pointer; border: none; background: transparent;">
-                    <i id="icon-fullscreen" class="fa-solid fa-expand"></i>
-                </button>
+                <div style="width: 1px; height: 24px; background: #334155; margin: 0 4px;"></div>
+                <button onclick="zoomIn()" style="cursor: pointer; border: none; background: transparent; color: #cbd5e1; width: 44px; height: 44px;"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+                <button onclick="zoomOut()" style="cursor: pointer; border: none; background: transparent; color: #cbd5e1; width: 44px; height: 44px;"><i class="fa-solid fa-magnifying-glass-minus"></i></button>
+                <button onclick="resetView()" style="cursor: pointer; border: none; background: transparent; color: #cbd5e1; width: 44px; height: 44px;"><i class="fa-solid fa-arrows-to-dot"></i></button>
             </div>
         </div>
 
-        <!-- Script điều khiển Pannellum -->
         <script>
             let viewer;
             let isAutoRotating = true;
             
-            // Đường dẫn tới ảnh của bạn
-            const defaultPanorama = "https://pannellum.org/images/alma.jpg"; 
+            // ĐẢM BẢO FILE NÀY ĐÃ CÓ TRÊN GITHUB
+            const defaultPanorama = "360-test.jpg"; 
 
             window.addEventListener('load', function() {
                 viewer = pannellum.viewer('panorama', {
@@ -85,8 +66,7 @@
                     "autoRotate": -2,
                     "autoRotateInactivityDelay": 3000,
                     "showControls": false,
-                    "hfov": 100,
-                    "compass": false
+                    "hfov": 100
                 });
 
                 viewer.on('load', function() {
@@ -109,43 +89,20 @@
 
             function updateRotateIcon() {
                 const icon = document.getElementById('icon-rotate');
-                const btn = document.getElementById('btn-rotate');
                 if (isAutoRotating) {
                     icon.className = "fa-solid fa-pause";
-                    btn.style.background = "#4f46e5"; // Màu xanh tím (indigo-600)
                 } else {
                     icon.className = "fa-solid fa-play";
-                    btn.style.background = "#1e293b"; // Màu xám đen (slate-800)
                 }
             }
 
             function zoomIn() { if (viewer) viewer.setHfov(viewer.getHfov() - 15); }
             function zoomOut() { if (viewer) viewer.setHfov(viewer.getHfov() + 15); }
-            
-            function resetView() { 
-                if (viewer) {
-                    viewer.setPitch(0); 
-                    viewer.setYaw(0); 
-                    viewer.setHfov(100); 
-                }
-            }
-
-            function toggleFullscreen() {
-                if (!document.fullscreenElement) {
-                    document.documentElement.requestFullscreen().catch(err => console.log(err));
-                    document.getElementById('icon-fullscreen').className = "fa-solid fa-compress";
-                } else {
-                    if (document.exitFullscreen) {
-                        document.exitFullscreen();
-                        document.getElementById('icon-fullscreen').className = "fa-solid fa-expand";
-                    }
-                }
-            }
+            function resetView() { if (viewer) { viewer.setPitch(0); viewer.setYaw(0); viewer.setHfov(100); } }
         </script>
 
     </section>
 
-    <!-- Các phần để test cuộn -->
     <section id="gioi-thieu" style="height: 800px; padding: 50px; text-align: center;">
         <h2 style="margin-top: 50px; color: #0056b3;">Giới thiệu</h2>
     </section>
