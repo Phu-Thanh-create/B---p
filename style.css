@@ -219,13 +219,13 @@ body {
     
     pointer-events: none;
     
-    /* Đường kẻ dọc */
+        /* Đường kẻ dọc */
     border-left: 2px solid #0056b3;
     border-right: 2px solid #0056b3;
     
-    /* Sửa lại hướng mờ: Đậm ở trên (0%), mờ dần ở dưới (100%) */
-    -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
-    mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+    /* Đảo ngược: Mờ dần ở trên (0%), đậm dần ở dưới (100%) */
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 100%);
 }
 .section-title {
     display: flex;
