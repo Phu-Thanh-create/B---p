@@ -10,6 +10,64 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    
+    <style>
+        /* CSS cho từng khung ảnh 360 */
+        .pano-block {
+            margin-bottom: 50px; /* Khoảng cách giữa các ảnh */
+        }
+        .pano-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #0056b3;
+            margin-bottom: 15px;
+            padding-left: 10px;
+            border-left: 5px solid #ff9a44;
+        }
+        .pano-wrapper {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        .pano-viewer {
+            width: 100%;
+            height: 600px;
+        }
+        .pano-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            padding: 8px;
+            border-radius: 16px;
+            gap: 8px;
+        }
+        .pano-btn {
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            color: #cbd5e1;
+            width: 44px;
+            height: 44px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 0.2s;
+        }
+        .pano-btn:hover { background: rgba(255,255,255,0.1); }
+        .pano-btn.btn-play {
+            background: #4f46e5;
+            color: white;
+        }
+    </style>
 </head>
 <body>
 
@@ -34,71 +92,136 @@
             <span class="text-3d">360°</span> <span class="text-sub">Một vài tấm ảnh đặc biệt từ chúng tôi!</span>
         </div>
 
-        <!-- Khung chứa ảnh 360 -->
-        <div style="border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); position: relative;">
-            <!-- CHỈ CÓ DUY NHẤT 1 THẺ PANORAMA NÀY THÔI -->
-            <div id="panorama" style="width: 100%; height: 600px;"></div>
-            
-            <!-- Thanh công cụ nổi -->
-            <div style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 10; background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); display: flex; align-items: center; padding: 8px; border-radius: 16px; gap: 8px;">
-                <button onclick="toggleAutoRotate()" style="cursor: pointer; border: none; background: #4f46e5; color: white; border-radius: 8px; width: 44px; height: 44px; display: flex; justify-content: center; align-items: center;">
-                    <i id="icon-rotate" class="fa-solid fa-pause"></i>
-                </button>
-                <div style="width: 1px; height: 24px; background: #334155; margin: 0 4px;"></div>
-                <button onclick="zoomIn()" style="cursor: pointer; border: none; background: transparent; color: #cbd5e1; width: 44px; height: 44px;"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-                <button onclick="zoomOut()" style="cursor: pointer; border: none; background: transparent; color: #cbd5e1; width: 44px; height: 44px;"><i class="fa-solid fa-magnifying-glass-minus"></i></button>
-                <button onclick="resetView()" style="cursor: pointer; border: none; background: transparent; color: #cbd5e1; width: 44px; height: 44px;"><i class="fa-solid fa-arrows-to-dot"></i></button>
+        <!-- KHUNG 1: Cổng trường -->
+        <div class="pano-block">
+            <div class="pano-title">1. Cổng trường</div>
+            <div class="pano-wrapper">
+                <div id="pano1" class="pano-viewer"></div>
+                <div class="pano-controls">
+                    <button onclick="toggleAutoRotate('pano1', this)" class="pano-btn btn-play"><i class="fa-solid fa-pause"></i></button>
+                    <div style="width: 1px; height: 24px; background: #334155; margin: 0 4px;"></div>
+                    <button onclick="zoomIn('pano1')" class="pano-btn"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+                    <button onclick="zoomOut('pano1')" class="pano-btn"><i class="fa-solid fa-magnifying-glass-minus"></i></button>
+                    <button onclick="resetView('pano1')" class="pano-btn"><i class="fa-solid fa-arrows-to-dot"></i></button>
+                </div>
             </div>
         </div>
 
+        <!-- KHUNG 2: Khu A -->
+        <div class="pano-block">
+            <div class="pano-title">2. Khu A</div>
+            <div class="pano-wrapper">
+                <div id="pano2" class="pano-viewer"></div>
+                <div class="pano-controls">
+                    <button onclick="toggleAutoRotate('pano2', this)" class="pano-btn btn-play"><i class="fa-solid fa-pause"></i></button>
+                    <div style="width: 1px; height: 24px; background: #334155; margin: 0 4px;"></div>
+                    <button onclick="zoomIn('pano2')" class="pano-btn"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+                    <button onclick="zoomOut('pano2')" class="pano-btn"><i class="fa-solid fa-magnifying-glass-minus"></i></button>
+                    <button onclick="resetView('pano2')" class="pano-btn"><i class="fa-solid fa-arrows-to-dot"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- KHUNG 3: Khu B -->
+        <div class="pano-block">
+            <div class="pano-title">3. Khu B</div>
+            <div class="pano-wrapper">
+                <div id="pano3" class="pano-viewer"></div>
+                <div class="pano-controls">
+                    <button onclick="toggleAutoRotate('pano3', this)" class="pano-btn btn-play"><i class="fa-solid fa-pause"></i></button>
+                    <div style="width: 1px; height: 24px; background: #334155; margin: 0 4px;"></div>
+                    <button onclick="zoomIn('pano3')" class="pano-btn"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+                    <button onclick="zoomOut('pano3')" class="pano-btn"><i class="fa-solid fa-magnifying-glass-minus"></i></button>
+                    <button onclick="resetView('pano3')" class="pano-btn"><i class="fa-solid fa-arrows-to-dot"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- KHUNG 4: Nhà thể thao -->
+        <div class="pano-block">
+            <div class="pano-title">4. Nhà thể thao</div>
+            <div class="pano-wrapper">
+                <div id="pano4" class="pano-viewer"></div>
+                <div class="pano-controls">
+                    <button onclick="toggleAutoRotate('pano4', this)" class="pano-btn btn-play"><i class="fa-solid fa-pause"></i></button>
+                    <div style="width: 1px; height: 24px; background: #334155; margin: 0 4px;"></div>
+                    <button onclick="zoomIn('pano4')" class="pano-btn"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+                    <button onclick="zoomOut('pano4')" class="pano-btn"><i class="fa-solid fa-magnifying-glass-minus"></i></button>
+                    <button onclick="resetView('pano4')" class="pano-btn"><i class="fa-solid fa-arrows-to-dot"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Script điều khiển -->
         <script>
-            let viewer;
-            let isAutoRotating = true;
-            
-            // ĐẢM BẢO FILE NÀY ĐÃ CÓ TRÊN GITHUB
-            const defaultPanorama = "cong-truong.jpg"; 
+            const viewers = {};
+            const autoRotateStates = {};
 
             window.addEventListener('load', function() {
-                viewer = pannellum.viewer('panorama', {
+                // Khởi tạo 4 khung ảnh
+                initPano('pano1', 'cong-truong.jpg');
+                initPano('pano2', 'khu-a.jpg');
+                initPano('pano3', 'khu-b.jpg');
+                initPano('pano4', 'nha-tt.jpg');
+            });
+
+            function initPano(id, imageSrc) {
+                viewers[id] = pannellum.viewer(id, {
                     "type": "equirectangular",
-                    "panorama": defaultPanorama,
+                    "panorama": imageSrc,
                     "autoLoad": true,
                     "autoRotate": -2,
                     "autoRotateInactivityDelay": 3000,
                     "showControls": false,
                     "hfov": 100
                 });
-
-                viewer.on('load', function() {
-                    isAutoRotating = true;
-                    updateRotateIcon();
+                
+                autoRotateStates[id] = true;
+                
+                // Khi ảnh load xong, cập nhật lại icon (đề phòng trình duyệt tự dừng auto-rotate)
+                viewers[id].on('load', function() {
+                    autoRotateStates[id] = true;
+                    updateBtnIcon(id);
                 });
-            });
-
-            function toggleAutoRotate() {
-                if (!viewer) return;
-                if (isAutoRotating) {
-                    viewer.stopAutoRotate();
-                    isAutoRotating = false;
-                } else {
-                    viewer.startAutoRotate(-2);
-                    isAutoRotating = true;
-                }
-                updateRotateIcon();
             }
 
-            function updateRotateIcon() {
-                const icon = document.getElementById('icon-rotate');
-                if (isAutoRotating) {
+            // Hàm dùng chung cho từng khung
+            function toggleAutoRotate(id, btn) {
+                if (!viewers[id]) return;
+                if (autoRotateStates[id]) {
+                    viewers[id].stopAutoRotate();
+                    autoRotateStates[id] = false;
+                } else {
+                    viewers[id].startAutoRotate(-2);
+                    autoRotateStates[id] = true;
+                }
+                updateBtnIcon(id);
+            }
+
+            function updateBtnIcon(id) {
+                // Tìm nút play tương ứng bằng cách tìm thẻ cha
+                const viewerDiv = document.getElementById(id);
+                const btn = viewerDiv.parentElement.querySelector('.btn-play');
+                const icon = btn.querySelector('i');
+                
+                if (autoRotateStates[id]) {
                     icon.className = "fa-solid fa-pause";
+                    btn.style.background = "#4f46e5"; // Màu xanh
                 } else {
                     icon.className = "fa-solid fa-play";
+                    btn.style.background = "transparent"; // Trong suốt
                 }
             }
 
-            function zoomIn() { if (viewer) viewer.setHfov(viewer.getHfov() - 15); }
-            function zoomOut() { if (viewer) viewer.setHfov(viewer.getHfov() + 15); }
-            function resetView() { if (viewer) { viewer.setPitch(0); viewer.setYaw(0); viewer.setHfov(100); } }
+            function zoomIn(id) { if (viewers[id]) viewers[id].setHfov(viewers[id].getHfov() - 15); }
+            function zoomOut(id) { if (viewers[id]) viewers[id].setHfov(viewers[id].getHfov() + 15); }
+            function resetView(id) { 
+                if (viewers[id]) { 
+                    viewers[id].setPitch(0); 
+                    viewers[id].setYaw(0); 
+                    viewers[id].setHfov(100); 
+                } 
+            }
         </script>
 
     </section>
