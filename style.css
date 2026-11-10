@@ -190,25 +190,35 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     
-    /* Giữ padding này để đẩy nội dung xuống */
+    /* Kéo khung trượt lên một chút */
+    margin-top: -80px; 
     padding: 100px 60px 50px 60px; 
     
-    /* 2 đường kẻ dọc 2 bên */
-    border-left: 2px solid #0056b3; 
-    border-right: 2px solid #0056b3; 
+    /* BỎ MÀU NỀN GRADIENT CŨ: Đổi thành nền trắng trong suốt */
+    background-color: transparent; 
     
-    /* SỬA LẠI GRADIENT: Bắt đầu bằng trong suốt hoàn toàn ở 0% */
-    background: linear-gradient(
-        to bottom, 
-        rgba(255, 255, 255, 0) 0%,            /* Trong suốt ở trên cùng để nhìn xuyên qua ảnh */
-        rgba(255, 255, 255, 0.8) 15%,         /* Bắt đầu chuyển sang trắng mờ */
-        rgba(173, 192, 232, 0.71) 52%,        /* 52% ADC0E8 */
-        rgba(173, 192, 232, 0.82) 70%,        /* 70% ADC0E8 */
-        #C8D5EF 100%                          /* 100% C8D5EF */
-    );
-    
+    /* TẠO 2 ĐƯỜNG KẺ DỌC MỜ DẦN */
     position: relative;
     z-index: 2;
+}
+
+/* Sử dụng thẻ ::before để tạo 2 đường kẻ dọc có hiệu ứng mờ dần */
+.main-content::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    pointer-events: none; /* Để chuột có thể click xuyên qua */
+    
+    /* Tạo 2 đường viền dọc màu xanh */
+    border-left: 2px solid #0056b3;
+    border-right: 2px solid #0056b3;
+    
+    /* MẸO: Dùng mặt nạ để làm cho 2 đường viền này đậm ở trên và mờ dần xuống dưới */
+    -webkit-mask-image: linear-gradient(to bottom, black 20%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 20%, transparent 100%);
 }
 .section-title {
     display: flex;
