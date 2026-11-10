@@ -308,35 +308,39 @@
                 </div>
             </div>
 
-                        <!-- Khối ảnh lịch sử cuối cùng (Có nút Xem Thêm) -->
+                                    <!-- Khối ảnh lịch sử cuối cùng (Chỉ hiện 2 ảnh đầu) -->
             <div class="achievement-col-full" style="margin-bottom: 40px;">
-                <div id="history-gallery" style="width: 80%; max-width: 800px; display: flex; flex-direction: column; gap: 15px;">
-                    <!-- 6 ảnh đầu tiên luôn hiển thị -->
+                <div style="width: 80%; max-width: 800px; display: flex; flex-direction: column; gap: 15px;">
+                    
+                    <!-- 2 ẢNH ĐẦU TIÊN LUÔN HIỂN THỊ -->
                     <img src="csvc17.png" alt="Toàn cảnh trường xưa" class="achievement-img">
                     <img src="csvc18.png" alt="Toàn cảnh trường xưa" class="achievement-img">
-                    <img src="csvc19.png" alt="Toàn cảnh trường xưa" class="achievement-img">
-                    <img src="csvc20.png" alt="Toàn cảnh trường xưa" class="achievement-img">
-                    <img src="csvc21.png" alt="Toàn cảnh trường xưa" class="achievement-img">
-                    <img src="csvc22.png" alt="Cổng trường xưa - nay" class="achievement-img">
 
-                    <!-- Các ảnh bị ẩn đi (Sẽ xổ ra khi bấm nút) -->
+                    <!-- CÁC ẢNH CÒN LẠI BỊ ẨN ĐI -->
                     <div id="more-images" style="display: none; flex-direction: column; gap: 15px;">
+                        <img src="csvc19.png" alt="Toàn cảnh trường xưa" class="achievement-img">
+                        <img src="csvc20.png" alt="Toàn cảnh trường xưa" class="achievement-img">
+                        <img src="csvc21.png" alt="Toàn cảnh trường xưa" class="achievement-img">
+                        
+                        <img src="csvc22.png" alt="Cổng trường xưa - nay" class="achievement-img">
                         <img src="csvc23.png" alt="Cổng trường xưa - nay" class="achievement-img">
                         <img src="csvc24.png" alt="Cổng trường xưa - nay" class="achievement-img">
                         <img src="csvc25.png" alt="Cổng trường xưa - nay" class="achievement-img">
                         <img src="csvc26.png" alt="Cổng trường xưa - nay" class="achievement-img">
                         <img src="csvc27.png" alt="Cổng trường xưa - nay" class="achievement-img">
+                        
                         <img src="csvc28.png" alt="Trường năm 1966" class="achievement-img">
                         <img src="csvc29.png" alt="Trường năm 1966" class="achievement-img">
                         <img src="csvc30.png" alt="Trường năm 1966" class="achievement-img">
                     </div>
                 </div>
                 
-                                <!-- Nút bấm Xem Thêm / Thu Gọn -->
+                <!-- Nút bấm Xem Thêm / Thu Gọn -->
                 <button id="toggle-gallery-btn" onclick="toggleGallery()" 
                         style="margin-top: 20px; padding: 12px 30px; background-color: #0056b3; color: white; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; font-weight: bold; transition: 0.3s;">
                     Xem thêm ảnh lịch sử ▼
                 </button>
+            </div>
 
         <!-- Script điều khiển Pannellum -->
         <script>
