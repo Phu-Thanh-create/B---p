@@ -307,39 +307,11 @@
                 </div>
             </div>
 
-            <!-- Khối ảnh lịch sử cuối cùng (Chỉ hiện 2 ảnh đầu) -->
-            <div class="achievement-col-full" style="margin-bottom: 40px;">
-                <div style="width: 80%; max-width: 800px; display: flex; flex-direction: column; gap: 15px;">
-                    
-                    <!-- 2 ẢNH ĐẦU TIÊN LUÔN HIỂN THỊ -->
-                    <img onerror="this.style.display='none'" src="csvc17.jpg" alt="Toàn cảnh trường xưa" class="achievement-img" loading="lazy">
-                    <img onerror="this.style.display='none'" src="csvc18.jpg" alt="Toàn cảnh trường xưa" class="achievement-img" loading="lazy">
-
-                    <!-- CÁC ẢNH CÒN LẠI BỊ ẨN ĐI -->
-                                        <!-- CÁC ẢNH CÒN LẠI BỊ ẨN ĐI (Chia 3 cột) -->
-                    <div id="more-images" style="display: none; flex-wrap: wrap; gap: 15px; justify-content: center;">
-                        <img onerror="this.style.display='none'" src="csvc19.jpg" alt="Toàn cảnh trường xưa" class="achievement-img" loading="lazy" style="width: calc(33.33% - 10px);">
-                        <img onerror="this.style.display='none'" src="csvc20.jpg" alt="Toàn cảnh trường xưa" class="achievement-img" loading="lazy" style="width: calc(33.33% - 10px);">
-                        <img onerror="this.style.display='none'" src="csvc21.jpg" alt="Toàn cảnh trường xưa" class="achievement-img" loading="lazy" style="width: calc(33.33% - 10px);">
-                        
-                        <img onerror="this.style.display='none'" src="csvc22.jpg" alt="Cổng trường xưa - nay" class="achievement-img" loading="lazy" style="width: calc(33.33% - 10px);">
-                        <img onerror="this.style.display='none'" src="csvc23.jpg" alt="Cổng trường xưa - nay" class="achievement-img" loading="lazy" style="width: calc(33.33% - 10px);">
-                        <img onerror="this.style.display='none'" src="csvc24.jpg" alt="Cổng trường xưa - nay" class="achievement-img" loading="lazy" style="width: calc(33.33% - 10px);">
-                        <img onerror="this.style.display='none'" src="csvc25.jpg" alt="Cổng trường xưa - nay" class="achievement-img" loading="lazy" style="width: calc(33.33% - 10px);">
-                        <img onerror="this.style.display='none'" src="csvc26.jpg" alt="Cổng trường xưa - nay" class="achievement-img" loading="lazy" style="width: calc(33.33% - 10px);">
-                        <img onerror="this.style.display='none'" src="csvc27.jpg" alt="Cổng trường xưa - nay" class="achievement-img" loading="lazy" style="width: calc(33.33% - 10px);">
-                        
-                        <img onerror="this.style.display='none'" src="csvc28.jpg" alt="Trường năm 1966" class="achievement-img" loading="lazy" style="width: calc(33.33% - 10px);">
-                        <img onerror="this.style.display='none'" src="csvc29.jpg" alt="Trường năm 1966" class="achievement-img" loading="lazy" style="width: calc(33.33% - 10px);">
-                        <img onerror="this.style.display='none'" src="csvc30.jpg" alt="Trường năm 1966" class="achievement-img" loading="lazy" style="width: calc(33.33% - 10px);">
-                    </div>
-                </div>
-                
-                <!-- Nút bấm Xem Thêm / Thu Gọn -->
-                <button id="toggle-gallery-btn" onclick="toggleGallery()" 
-                        style="margin-top: 20px; padding: 12px 30px; background-color: #0056b3; color: white; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; font-weight: bold; transition: 0.3s;">
-                    Xem thêm ảnh lịch sử ▼
-                </button>
+                        <!-- Nút chuyển sang trang thư viện ảnh -->
+            <div style="text-align: center; margin: 40px 0;">
+                <a href="thu-vien.html" style="display: inline-block; padding: 15px 40px; background-color: #0056b3; color: white; text-decoration: none; border-radius: 10px; font-size: 18px; font-weight: bold; box-shadow: 0 4px 15px rgba(0,86,179,0.4); transition: 0.3s;">
+                    📸 Xem Thư Viện Ảnh Lịch Sử
+                </a>
             </div>
 
         </div>
@@ -385,21 +357,6 @@
             function zoomOut(id) { if (viewers[id]) viewers[id].setHfov(viewers[id].getHfov() + 15); }
             function resetView(id) { if (viewers[id]) { viewers[id].setPitch(0); viewers[id].setYaw(0); viewers[id].setHfov(100); } }
 
-            // Hàm Xem thêm / Thu gọn
-            function toggleGallery() {
-                const moreImages = document.getElementById('more-images');
-                const btn = document.getElementById('toggle-gallery-btn');
-                
-                if (moreImages.style.display === 'none' || moreImages.style.display === '') {
-                    moreImages.style.display = 'flex';
-                    btn.innerHTML = 'Thu gọn ảnh lịch sử ▲';
-                    btn.style.backgroundColor = '#475569'; 
-                } else {
-                    moreImages.style.display = 'none';
-                    btn.innerHTML = 'Xem thêm ảnh lịch sử ▼';
-                    btn.style.backgroundColor = '#0056b3'; 
-                }
-            }
         </script>
 
     </section>

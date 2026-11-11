@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thư viện ảnh - Lớp 11A2</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .gallery-container {
+            max-width: 1200px;
+            margin: 100px auto 50px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+        .gallery-title {
+            font-size: 36px;
+            color: #0056b3;
+            margin-bottom: 10px;
+            font-weight: 900;
+        }
+        .gallery-subtitle {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 40px;
+        }
+        /* Lưới ảnh: tự động chia 3 cột trên máy tính, 1 cột trên điện thoại */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .gallery-grid img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        .gallery-grid img:hover {
+            transform: scale(1.03);
+        }
+        /* Nút quay lại */
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #0056b3;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .back-btn:hover { background-color: #003d82; }
+    </style>
+</head>
+<body>
+    <!-- Nút quay lại trang chính -->
+    <a href="trang-chinh.html" class="back-btn">← Quay lại trang chính</a>
+
+    <div class="gallery-container">
+        <h1 class="gallery-title">Thư viện ảnh lịch sử</h1>
+        <p class="gallery-subtitle">Toàn cảnh trường qua các thời kỳ</p>
+
+        <!-- Lưới chứa 30 tấm ảnh -->
+        <div class="gallery-grid">
+            <!-- Ảnh 1 đến 30 (Dán đủ 30 thẻ img) -->
+            <img src="csvc1.jpg" alt="Ảnh 1" loading="lazy">
+            <img src="csvc2.jpg" alt="Ảnh 2" loading="lazy">
+            <img src="csvc3.jpg" alt="Ảnh 3" loading="lazy">
+            <img src="csvc4.jpg" alt="Ảnh 4" loading="lazy">
+            <img src="csvc5.jpg" alt="Ảnh 5" loading="lazy">
+            <img src="csvc6.jpg" alt="Ảnh 6" loading="lazy">
+            <img src="csvc7.jpg" alt="Ảnh 7" loading="lazy">
+            <img src="csvc8.jpg" alt="Ảnh 8" loading="lazy">
+            <img src="csvc9.jpg" alt="Ảnh 9" loading="lazy">
+            <img src="csvc10.jpg" alt="Ảnh 10" loading="lazy">
+            <img src="csvc11.jpg" alt="Ảnh 11" loading="lazy">
+            <img src="csvc12.jpg" alt="Ảnh 12" loading="lazy">
+            <img src="csvc13.jpg" alt="Ảnh 13" loading="lazy">
+            <img src="csvc14.jpg" alt="Ảnh 14" loading="lazy">
+            <img src="csvc15.jpg" alt="Ảnh 15" loading="lazy">
+            <img src="csvc16.jpg" alt="Ảnh 16" loading="lazy">
+            <img src="csvc17.jpg" alt="Ảnh 17" loading="lazy">
+            <img src="csvc18.jpg" alt="Ảnh 18" loading="lazy">
+            <img src="csvc19.jpg" alt="Ảnh 19" loading="lazy">
+            <img src="csvc20.jpg" alt="Ảnh 20" loading="lazy">
+            <img src="csvc21.jpg" alt="Ảnh 21" loading="lazy">
+            <img src="csvc22.jpg" alt="Ảnh 22" loading="lazy">
+            <img src="csvc23.jpg" alt="Ảnh 23" loading="lazy">
+            <img src="csvc24.jpg" alt="Ảnh 24" loading="lazy">
+            <img src="csvc25.jpg" alt="Ảnh 25" loading="lazy">
+            <img src="csvc26.jpg" alt="Ảnh 26" loading="lazy">
+            <img src="csvc27.jpg" alt="Ảnh 27" loading="lazy">
+            <img src="csvc28.jpg" alt="Ảnh 28" loading="lazy">
+            <img src="csvc29.jpg" alt="Ảnh 29" loading="lazy">
+            <img src="csvc30.jpg" alt="Ảnh 30" loading="lazy">
+        </div>
+    </div>
+</body>
+</html>
